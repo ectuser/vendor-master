@@ -1,90 +1,87 @@
-# VendorMaster
+# VendorMaster Frontend Application
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+## Requirements
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+Develop a frontend application for managing vendor master data.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+### Functional Requirements
 
-## Finish your CI setup
+#### Vendor Management
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/V46zDFvLEd)
+1. **Vendor List Table**
+   - Should provide UI tools for filtering, sorting, and searching (optional).
 
+2. **Vendor Creation Form**
+   - Validate phone numbers based on the Austrian phone code.
+   - Validate email addresses.
+   - Provide a list of countries for phone code selection (optional).
 
-## Generate a library
+3. **Vendor View/Update Form**
+   - Validate phone numbers based on the Austrian phone code when editing.
+   - Validate email addresses when editing.
+   - Provide a list of countries for phone code selection (optional).
 
-```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
-```
+4. **Delete Contact Person**
+   - Allow deletion of contact persons from the list table.
+   - Allow deletion of contact persons from the view/update form.
 
-## Run tasks
+#### Bank Account Management
 
-To build the library use:
+1. **Bank Accounts List Table**
+   - Should provide UI tools for filtering, sorting, and searching (optional).
 
-```sh
-npx nx build pkg1
-```
+2. **Bank Account Creation Form**
+   - Validate IBAN (optional).
+   - Validate BIC (optional).
 
-To run any task with Nx use:
+3. **Bank Account View/Update Form**
+   - Validate IBAN when editing (optional).
+   - Validate BIC when editing (optional).
 
-```sh
-npx nx <target> <project-name>
-```
+4. **Delete Contact Person**
+   - Allow deletion of contact persons from the list table.
+   - Allow deletion of contact persons from the view/update form.
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+#### Contact Person Management
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+1. **Contact People List Table**
+   - Should provide UI tools for filtering, sorting, and searching (optional).
 
-## Versioning and releasing
+2. **Contact People Creation Form**
+   - Validate phone numbers based on the Austrian phone code.
+   - Validate email addresses.
+   - Provide a list of countries for phone code selection (optional).
 
-To version and release the library use
+3. **Contact People View/Update Form**
+   - Validate phone numbers based on the Austrian phone code when editing.
+   - Validate email addresses when editing.
+   - Provide a list of countries for phone code selection (optional).
 
-```
-npx nx release
-```
+4. **Delete Contact Person**
+   - Allow deletion of contact persons from the list table.
+   - Allow deletion of contact persons from the view/update form.
 
-Pass `--dry-run` to see what would happen without actually releasing the library.
+#### User Authentication
 
-[Learn more about Nx release &raquo;](hhttps://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- Users should be able to log in via a login page.
+- **Admin Users** can create, update, and delete entities (vendor, bank account, contact person).
+- **Guest Users** can only view entities.
+- Users should be able to log out using a button in the header.
 
-## Keep TypeScript project references up to date
+---
 
-Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
+### Non-functional Requirements
 
-To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
-
-```sh
-npx nx sync
-```
-
-You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
-
-```sh
-npx nx sync:check
-```
-
-[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
-
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- The application should be a Single Page Application (SPA).
+- Built with `React` as the UI library.
+- Use `daisyui` and `tailwind` for styling and appearance.
+- Structure the application as an `Nx` monorepo, with each application module encapsulated within separate libraries for effective module logic management.
+- Implement state management with `Redux Toolkit`.
+- Use `RTK Query` for data fetching.
+- Implement form handling and validation with `react-hook-form`.
+- Build tables using `TanStack Table`.
+- Load the full dataset and implement client-side pagination.
+- Implement authentication with a custom Node.js server using predefined (mock) user data.
+- Utilize JWT for authorization on both the custom Node.js server and the frontend (optional).
+- Dockerize the application and mock backend services (optional).
+- Add support for server-side pagination and adjust the frontend to work with server-side pagination (optional).
