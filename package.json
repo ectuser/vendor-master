@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nx serve vendor-master"
+    "dev": "nx serve vendor-master",
+    "mock-server": "npx mock-config-server"
   },
   "private": true,
   "devDependencies": {
@@ -41,6 +42,7 @@
     "eslint-plugin-react": "7.35.0",
     "eslint-plugin-react-hooks": "5.0.0",
     "jsdom": "~22.1.0",
+    "mock-config-server": "^3.6.1",
     "nx": "20.0.13",
     "postcss": "8.4.38",
     "prettier": "^2.6.2",
