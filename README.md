@@ -85,3 +85,10 @@ Develop a frontend application for managing vendor master data.
 - Utilize JWT for authorization on both the custom Node.js server and the frontend (optional).
 - Dockerize the application and mock backend services (optional).
 - Add support for server-side pagination and adjust the frontend to work with server-side pagination (optional).
+
+---
+
+### Note on Class Diagram and Domain Model
+
+No class diagram or domain model is provided, as the entities are decoupled and do not have direct relationships.
+
