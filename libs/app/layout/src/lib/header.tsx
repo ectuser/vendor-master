@@ -34,14 +34,16 @@ export const Header = () => {
             <li>
               <Link to="/contact-people">Contact People</Link>
             </li>
+            <li>
+              <div tabIndex={0} role="button">
+                Log out
+              </div>
+            </li>
           </ul>
         </div>
         <Link className="btn btn-ghost text-xl" to="/">
           Vendor Management
         </Link>
-      </div>
-      <div className="navbar-end">
-        <button className="btn">Log out</button>
       </div>
     </header>
   );
