@@ -5,7 +5,7 @@ export const AuthLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Header />
-      <main className="container p-2">{children}</main>
+      <main className="content-container py-2">{children}</main>
     </>
   );
 };
