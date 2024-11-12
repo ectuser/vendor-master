@@ -1,34 +1,33 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "emitDecoratorMetadata": false,
-    "esModuleInterop": true,
-    "experimentalDecorators": false,
-    "forceConsistentCasingInFileNames": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "importHelpers": true,
-    "incremental": true,
-    "isolatedModules": true,
-    "lib": ["es2022"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "noEmitOnError": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "pretty": true,
-    "removeComments": false,
-    "resolveJsonModule": false,
-    "skipDefaultLibCheck": false,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
-    "sourceMap": false,
-    "strict": true,
-    "target": "es2022",
-    "verbatimModuleSyntax": false
-  }
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@vendor-master/auth": ["libs/features/auth/src/index.ts"],
+      "@vendor-master/bank-account": [
+        "libs/features/bank-account/src/index.ts"
+      ],
+      "@vendor-master/contact-person": [
+        "libs/features/contact-person/src/index.ts"
+      ],
+      "@vendor-master/layout": ["libs/app/layout/src/index.ts"],
+      "@vendor-master/router": ["libs/app/router/src/index.ts"],
+      "@vendor-master/store": ["libs/app/store/src/index.ts"],
+      "@vendor-master/ui": ["libs/app/ui/src/index.ts"],
+      "@vendor-master/vendor": ["libs/features/vendor/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
 }
