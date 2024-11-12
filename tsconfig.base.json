@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@vendor-master/layout": ["libs/app/layout/src/index.ts"],
-      "@vendor-master/router": ["libs/app/router/src/index.ts"]
+      "@vendor-master/router": ["libs/app/router/src/index.ts"],
+      "@vendor-master/store": ["libs/app/store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
