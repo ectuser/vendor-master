@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { AuthLayout } from '@vendor-master/layout';
-import { VendorsListPage } from '@vendor-master/vendor';
+import { CrateVendorPage, VendorsListPage } from '@vendor-master/vendor';
 
 const router = createBrowserRouter([
   {
@@ -53,11 +53,11 @@ const router = createBrowserRouter([
         path: 'new',
         element: (
           <AuthLayout>
-            <div>Test</div>
+            <CrateVendorPage />
           </AuthLayout>
         ),
         handle: {
-          crumb: () => <Link to="/vendors/new">View Vendor</Link>,
+          crumb: () => <Link to="/vendors/new">Create Vendor</Link>,
         },
       },
     ],
