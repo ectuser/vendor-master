@@ -92,6 +92,7 @@ Develop a frontend application for managing vendor master data.
 - Build tables using `TanStack Table`.
 - Load the full dataset and implement client-side pagination.
 - Implement authentication with a custom Node.js server using predefined (mock) user data.
+- Include an Error Boundary to catch and handle errors in the UI (optional).
 - Utilize JWT for authorization on both the custom Node.js server and the frontend (optional).
 - Dockerize the application and mock backend services (optional).
 - Add support for server-side pagination and adjust the frontend to work with server-side pagination (optional).
