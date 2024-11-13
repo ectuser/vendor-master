@@ -34,7 +34,10 @@ export const CrateVendorPage = () => {
         </div>
       ) : null}
 
-      <VendorCreateForm submit={handleSubmit} disableEditing={false} />
+      <VendorCreateForm
+        submit={handleSubmit}
+        disableEditing={addVendorResult.isLoading}
+      />
     </div>
   );
 };

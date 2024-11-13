@@ -4,6 +4,7 @@ import {
   FieldValues,
   Path,
   UseFormRegister,
+  UseFormReturn,
 } from 'react-hook-form';
 import { ZodType } from 'zod';
 
@@ -18,10 +19,8 @@ export type FieldDefinition<T> = {
 };
 
 export type FormProps<T extends Record<string, any>> = {
-  schema: ZodType<T>;
   fields: FieldDefinition<T>[];
-  initialValues?: DefaultValues<T>;
-  onSubmit: (data: T) => void;
+  form: UseFormReturn<T>;
   disableEditing?: boolean;
 };
 

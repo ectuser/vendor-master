@@ -1,6 +1,8 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { GenericForm } from '@vendor-master/ui';
 import { FieldDefinition } from '@vendor-master/ui';
 import { FC } from 'react';
+import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const phoneRegex = /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/;
@@ -40,13 +42,26 @@ export const VendorCreateForm: FC<{
   disableEditing?: boolean;
   submit: (data: CreateVendorFormData) => unknown;
 }> = ({ values, submit, disableEditing }) => {
+  const form = useForm({
+    resolver: zodResolver(CreateVendorSchema),
+    values: values,
+  });
+
   return (
-    <GenericForm
-      schema={CreateVendorSchema}
-      fields={vendorFields}
-      initialValues={values}
-      onSubmit={submit}
-      disableEditing={disableEditing}
-    />
+    <form onSubmit={form.handleSubmit(submit)}>
+      <GenericForm
+        form={form}
+        fields={vendorFields}
+        disableEditing={disableEditing}
+      />
+
+      <button
+        disabled={disableEditing}
+        type="submit"
+        className="btn btn-primary mt-3"
+      >
+        Create new vendor
+      </button>
+    </form>
   );
 };

@@ -9,6 +9,7 @@ import { AuthLayout } from '@vendor-master/layout';
 import {
   CrateVendorPage,
   EditVendorPage,
+  ViewVendorPage,
   VendorsListPage,
 } from '@vendor-master/vendor';
 
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
         path: 'view/:id',
         element: (
           <AuthLayout>
-            <div>View</div>
+            <ViewVendorPage />
           </AuthLayout>
         ),
         handle: {

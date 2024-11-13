@@ -1,27 +1,16 @@
-import { useForm } from 'react-hook-form';
 import { FormInputField } from './form-input-field';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProps } from './types';
 import { FormTextareaField } from './form-textarea-field';
 
 export const GenericForm = <T extends Record<string, any>>({
-  schema,
+  form,
   fields,
-  initialValues,
-  onSubmit,
   disableEditing,
 }: FormProps<T>) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<T>({
-    resolver: zodResolver(schema),
-    defaultValues: initialValues,
-  });
+  const errors = form.formState.errors;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <div>
       {fields.map((field) => {
         const fieldError = errors[field.name as keyof typeof errors];
 
@@ -35,8 +24,8 @@ export const GenericForm = <T extends Record<string, any>>({
                 key={field.name as string}
                 type={field.type}
                 label={field.label}
-                name={field.name as string}
-                register={register as any}
+                name={field.name as any}
+                register={form.register}
                 disabled={disableEditing || field.disabled}
                 error={fieldError as any}
               />
@@ -46,8 +35,8 @@ export const GenericForm = <T extends Record<string, any>>({
               <FormTextareaField
                 key={field.name as string}
                 label={field.label}
-                name={field.name as string}
-                register={register as any}
+                name={field.name as any}
+                register={form.register}
                 disabled={disableEditing || field.disabled}
                 error={fieldError as any}
               />
@@ -56,13 +45,6 @@ export const GenericForm = <T extends Record<string, any>>({
             return null;
         }
       })}
-      <button
-        disabled={disableEditing}
-        type="submit"
-        className="btn btn-primary mt-3"
-      >
-        Save
-      </button>
-    </form>
+    </div>
   );
 };
