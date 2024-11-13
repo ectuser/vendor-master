@@ -14,7 +14,11 @@ import {
 } from '@vendor-master/vendor';
 
 import { LoginPage } from '@vendor-master/auth';
-import { LoginRestrictOutlet, PrivateOutlet } from './private-outlet';
+import {
+  AdminOutlet,
+  LoginRestrictOutlet,
+  PrivateOutlet,
+} from './private-outlet';
 
 const router = createBrowserRouter([
   {
@@ -46,7 +50,11 @@ const router = createBrowserRouter([
           },
           {
             path: 'edit/:id',
-            element: <EditVendorPage />,
+            element: (
+              <AdminOutlet>
+                <EditVendorPage />
+              </AdminOutlet>
+            ),
             handle: {
               crumb: () => <Link to="/vendors/edit">Edit Vendor</Link>,
             },
@@ -60,7 +68,11 @@ const router = createBrowserRouter([
           },
           {
             path: 'new',
-            element: <CrateVendorPage />,
+            element: (
+              <AdminOutlet>
+                <CrateVendorPage />
+              </AdminOutlet>
+            ),
             handle: {
               crumb: () => <Link to="/vendors/new">Create Vendor</Link>,
             },

@@ -7,7 +7,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const adminCredentials = { email: 'admin@admin.com', password: 'admin123' };
+const adminCredentials = {
+  email: 'admin@admin.com',
+  password: 'admin@admin.com',
+};
 const jwtSecret = 'secret_key';
 
 app.post('/login', (req, res) => {

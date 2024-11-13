@@ -1,4 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {
+  createDraftSafeSelectorCreator,
+  createSlice,
+  weakMapMemoize,
+} from '@reduxjs/toolkit';
 import { authApi } from '@vendor-master/api';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 
@@ -17,17 +21,11 @@ const initialState: AuthState = {
 export const authSlice = createSlice({
   name: 'auth',
   reducerPath: 'auth',
-  initialState: initialState,
+  initialState,
   reducers: {
     logout: (state) => {
       state.token = undefined;
     },
-  },
-  selectors: {
-    currentToken: (state) => state.token,
-    currentRole: (state) =>
-      state.token ? jwtDecode<JwtAuthPayload>(state.token).role : undefined,
-    isLoggedIn: (state) => !!state.token,
   },
   extraReducers: (builder) => {
     builder.addMatcher(
@@ -38,3 +36,29 @@ export const authSlice = createSlice({
     );
   },
 });
+
+const createWeakMapDraftSafeSelector =
+  createDraftSafeSelectorCreator(weakMapMemoize);
+const selectSelf = (state: { auth: AuthState }) => state.auth;
+
+// Memoized selectors using createWeakMapDraftSafeSelector
+export const selectCurrentToken = createWeakMapDraftSafeSelector(
+  selectSelf,
+  (state) => state.token
+);
+
+export const selectCurrentRole = createWeakMapDraftSafeSelector(
+  selectSelf,
+  (state) =>
+    state.token ? jwtDecode<JwtAuthPayload>(state.token).role : undefined
+);
+
+export const selectIsLoggedIn = createWeakMapDraftSafeSelector(
+  selectSelf,
+  (state) => !!state.token
+);
+
+export const selectIsAdmin = createWeakMapDraftSafeSelector(
+  selectCurrentRole,
+  (role) => role === 'admin'
+);

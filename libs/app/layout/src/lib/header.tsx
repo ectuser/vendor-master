@@ -1,12 +1,16 @@
 import { useAppDispatch, useAppSelector } from '@vendor-master/store-utils';
 import { Link } from 'react-router-dom';
 
-import { authSlice } from '@vendor-master/auth';
+import {
+  authSlice,
+  selectCurrentRole,
+  selectIsLoggedIn,
+} from '@vendor-master/auth';
 
 export const Header = () => {
   const dispatch = useAppDispatch();
-  const isLoggedIn = useAppSelector(authSlice.selectors.isLoggedIn);
-  const role = useAppSelector(authSlice.selectors.currentRole);
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const role = useAppSelector(selectCurrentRole);
 
   console.log({ role });
 
@@ -66,7 +70,7 @@ export const Header = () => {
 
         {isLoggedIn ? (
           <button className="btn" onClick={handleLogOut}>
-            Log Out
+            Log Out ({role})
           </button>
         ) : null}
       </div>
