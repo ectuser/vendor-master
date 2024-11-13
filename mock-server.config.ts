@@ -1,4 +1,8 @@
-import type { MockServerConfig } from 'mock-config-server';
+import {
+  createMockServer,
+  startMockServer,
+  type MockServerConfig,
+} from 'mock-config-server';
 
 const { vendorsMock } = require('./mocks/vendors');
 const { bankAccounts } = require('./mocks/bank-accounts');
@@ -27,4 +31,5 @@ const mockServerConfig: MockServerConfig = {
   },
 };
 
-export default mockServerConfig;
+createMockServer(mockServerConfig);
+startMockServer(mockServerConfig);
