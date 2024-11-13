@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./apps/vendor-master/Dockerfile
+    working_dir: /app
+    ports:
+      - '5111:5111'
+    depends_on:
+      - backend
+      - mock-db
+    volumes:
+      - .:/app
+    command: sh -c "npm install && npm run frontend"
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./apps/auth-backend/Dockerfile
+    working_dir: /app
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+    command: sh -c "npm install && npm run server"
+
+  mock-db:
+    image: node:20
+    working_dir: /app
+    ports:
+      - '31299:31299'
+    volumes:
+      - .:/app
+    command: sh -c "npm install && npm run mock-server"
