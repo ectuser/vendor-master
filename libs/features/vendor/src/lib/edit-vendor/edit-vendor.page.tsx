@@ -1,4 +1,4 @@
-import { Link, Navigate, redirect, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import {
   useDeleteVendorMutation,
   useGetVendorByIdQuery,
@@ -60,12 +60,7 @@ export const EditVendorPage = () => {
 
   return (
     <div className="prose">
-      <div className="flex gap-2 flex-wrap">
-        <h1>Edit Vendor {data.name}</h1>
-        <button className="btn btn-error" onClick={handleDelete}>
-          Delete Vendor {data.name}
-        </button>
-      </div>
+      <h1>Edit Vendor {data.name}</h1>
 
       {updateResult.isSuccess ? (
         <div role="alert" className="alert alert-success">
@@ -92,6 +87,7 @@ export const EditVendorPage = () => {
       <EditVendorForm
         values={data}
         submit={handleSubmit}
+        deleteVendor={handleDelete}
         disableEditing={updateResult.isLoading || deleteResult.isLoading}
       />
     </div>

@@ -8,12 +8,12 @@ export const FormInputField = <TFormData extends FieldValues>({
   label,
   ...otherProps
 }: FormInputFieldProps<TFormData>) => (
-  <label className="form-control w-full max-w-xs">
+  <label className="form-control w-full sm:max-w-xs">
     <div className="label">
       <span className="label-text">{label}</span>
     </div>
     <input
-      className={`input input-bordered w-full max-w-xs ${
+      className={`input input-bordered w-full sm:max-w-xs ${
         error ? 'input-error' : null
       }`}
       {...otherProps}

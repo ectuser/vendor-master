@@ -41,7 +41,8 @@ export const EditVendorForm: FC<{
   values?: EditVendorFormData;
   disableEditing?: boolean;
   submit: (data: EditVendorFormData) => unknown;
-}> = ({ values, submit, disableEditing }) => {
+  deleteVendor: () => unknown;
+}> = ({ values, submit, disableEditing, deleteVendor }) => {
   const form = useForm({
     resolver: zodResolver(EditVendorSchema),
     values: values,
@@ -55,13 +56,23 @@ export const EditVendorForm: FC<{
         disableEditing={disableEditing}
       />
 
-      <button
-        disabled={disableEditing}
-        type="submit"
-        className="btn btn-primary mt-3"
-      >
-        Save Vendor
-      </button>
+      <div className="flex gap-3 flex-wrap">
+        <button
+          onClick={deleteVendor}
+          disabled={disableEditing}
+          className="btn btn-error mt-3"
+        >
+          Delete Vendor
+        </button>
+
+        <button
+          disabled={disableEditing}
+          type="submit"
+          className="btn btn-primary mt-3"
+        >
+          Save Vendor
+        </button>
+      </div>
     </form>
   );
 };
