@@ -13,10 +13,16 @@ import {
   VendorsListPage,
 } from '@vendor-master/vendor';
 
+import { LoginPage } from '@vendor-master/auth';
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Navigate to="/vendors" replace />,
+  },
+  {
+    path: 'login',
+    element: <LoginPage />,
   },
   {
     path: 'vendors',
