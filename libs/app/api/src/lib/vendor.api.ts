@@ -28,7 +28,7 @@ export const vendorApi = createApi({
           body,
         };
       },
-      invalidatesTags: [{ type: 'Vendors' }],
+      invalidatesTags: [{ type: 'Vendors', id: 'LIST' }],
     }),
     updateVendor: builder.mutation<Vendor, Partial<Vendor>>({
       query: ({ id, ...patch }) => ({
