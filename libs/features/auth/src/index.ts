@@ -1,2 +1,2 @@
 export * from './lib/login/login.page';
-export * from './lib/login.slice';
+export * from './lib/auth.slice';

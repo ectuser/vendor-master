@@ -41,7 +41,6 @@ const createWeakMapDraftSafeSelector =
   createDraftSafeSelectorCreator(weakMapMemoize);
 const selectSelf = (state: { auth: AuthState }) => state.auth;
 
-// Memoized selectors using createWeakMapDraftSafeSelector
 export const selectCurrentToken = createWeakMapDraftSafeSelector(
   selectSelf,
   (state) => state.token
