@@ -14,13 +14,13 @@ Develop a frontend application for managing vendor master data.
 
 2. **Vendor Creation Form**
 
-   - Validate phone numbers based on the Austrian phone code.
+   - Validate phone numbers.
    - Validate email addresses.
    - Provide a list of countries for phone code selection (optional).
 
 3. **Vendor View/Update Form**
 
-   - Validate phone numbers based on the Austrian phone code when editing.
+   - Validate phone numbers when editing.
    - Validate email addresses when editing.
    - Provide a list of countries for phone code selection (optional).
 
@@ -56,13 +56,13 @@ Develop a frontend application for managing vendor master data.
 
 2. **Contact People Creation Form**
 
-   - Validate phone numbers based on the Austrian phone code.
+   - Validate phone numbers.
    - Validate email addresses.
    - Provide a list of countries for phone code selection (optional).
 
 3. **Contact People View/Update Form**
 
-   - Validate phone numbers based on the Austrian phone code when editing.
+   - Validate phone numbers when editing.
    - Validate email addresses when editing.
    - Provide a list of countries for phone code selection (optional).
 
