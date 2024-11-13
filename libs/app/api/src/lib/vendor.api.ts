@@ -6,6 +6,16 @@ export const vendorApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:31299/vendors' }),
   tagTypes: ['Vendors'],
   endpoints: (builder) => ({
+    getVendors: builder.query<Vendor[], void>({
+      query: () => '',
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: 'Vendors', id } as const)),
+              { type: 'Vendors', id: 'LIST' },
+            ]
+          : [{ type: 'Vendors', id: 'LIST' }],
+    }),
     getVendorById: builder.query<Vendor, string>({
       query: (id) => id,
       providesTags: (result, error, id) => [{ type: 'Vendors', id }],
@@ -18,7 +28,7 @@ export const vendorApi = createApi({
           body,
         };
       },
-      invalidatesTags: [{ type: 'Vendors' }],
+      invalidatesTags: [{ type: 'Vendors', id: 'LIST' }],
     }),
     updateVendor: builder.mutation<Vendor, Partial<Vendor>>({
       query: ({ id, ...patch }) => ({
@@ -42,6 +52,7 @@ export const vendorApi = createApi({
 });
 
 export const {
+  useGetVendorsQuery,
   useGetVendorByIdQuery,
   useUpdateVendorMutation,
   useDeleteVendorMutation,
