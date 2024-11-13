@@ -14,6 +14,11 @@ import {
 } from '@vendor-master/vendor';
 
 import { LoginPage } from '@vendor-master/auth';
+import {
+  AdminOutlet,
+  LoginRestrictOutlet,
+  PrivateOutlet,
+} from './private-outlet';
 
 const router = createBrowserRouter([
   {
@@ -22,72 +27,67 @@ const router = createBrowserRouter([
   },
   {
     path: 'login',
-    element: <LoginPage />,
+    element: (
+      <LoginRestrictOutlet>
+        <LoginPage />
+      </LoginRestrictOutlet>
+    ),
   },
   {
     path: 'vendors',
     handle: {
       crumb: () => <Link to="/vendors">Vendors</Link>,
     },
+    element: <PrivateOutlet />,
     children: [
       {
         path: '',
-        element: (
-          <AuthLayout>
-            <VendorsListPage />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: 'edit/:id',
-        element: (
-          <AuthLayout>
-            <EditVendorPage />
-          </AuthLayout>
-        ),
-        handle: {
-          crumb: () => <Link to="/vendors/edit">Edit Vendor</Link>,
-        },
-      },
-      {
-        path: 'view/:id',
-        element: (
-          <AuthLayout>
-            <ViewVendorPage />
-          </AuthLayout>
-        ),
-        handle: {
-          crumb: () => <Link to="/vendors/view">View Vendor</Link>,
-        },
-      },
-      {
-        path: 'new',
-        element: (
-          <AuthLayout>
-            <CrateVendorPage />
-          </AuthLayout>
-        ),
-        handle: {
-          crumb: () => <Link to="/vendors/new">Create Vendor</Link>,
-        },
+        element: <AuthLayout />,
+        children: [
+          {
+            path: '',
+            element: <VendorsListPage />,
+          },
+          {
+            path: 'edit/:id',
+            element: (
+              <AdminOutlet>
+                <EditVendorPage />
+              </AdminOutlet>
+            ),
+            handle: {
+              crumb: () => <Link to="/vendors/edit">Edit Vendor</Link>,
+            },
+          },
+          {
+            path: 'view/:id',
+            element: <ViewVendorPage />,
+            handle: {
+              crumb: () => <Link to="/vendors/view">View Vendor</Link>,
+            },
+          },
+          {
+            path: 'new',
+            element: (
+              <AdminOutlet>
+                <CrateVendorPage />
+              </AdminOutlet>
+            ),
+            handle: {
+              crumb: () => <Link to="/vendors/new">Create Vendor</Link>,
+            },
+          },
+        ],
       },
     ],
   },
   {
     path: 'bank-accounts',
-    element: (
-      <AuthLayout>
-        <div>Hello world! 123</div>
-      </AuthLayout>
-    ),
+    element: <div>Hello world! 123</div>,
   },
   {
     path: 'contact-people',
-    element: (
-      <AuthLayout>
-        <div>Hello world! 123</div>
-      </AuthLayout>
-    ),
+    element: <div>Hello world! 123</div>,
   },
   {
     path: '*',

@@ -17,6 +17,7 @@
     "paths": {
       "@vendor-master/api": ["libs/app/api/src/index.ts"],
       "@vendor-master/auth": ["libs/features/auth/src/index.ts"],
+      "@vendor-master/auth-store": ["libs/features/auth-store/src/index.ts"],
       "@vendor-master/bank-account": [
         "libs/features/bank-account/src/index.ts"
       ],
