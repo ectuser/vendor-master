@@ -16,16 +16,18 @@ const CreateVendorSchema = z.object({
   notes: z.string().nullable(),
 });
 
-export type FormData = z.infer<typeof CreateVendorSchema>;
+export type CreateVendorFormData = z.infer<typeof CreateVendorSchema>;
 
 export const VendorForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(CreateVendorSchema) });
+  } = useForm<CreateVendorFormData>({
+    resolver: zodResolver(CreateVendorSchema),
+  });
 
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = (data: CreateVendorFormData) => console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
