@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@vendor-master/api": ["libs/app/api/src/index.ts"],
       "@vendor-master/auth": ["libs/features/auth/src/index.ts"],
       "@vendor-master/bank-account": [
         "libs/features/bank-account/src/index.ts"
@@ -24,6 +25,7 @@
       ],
       "@vendor-master/layout": ["libs/app/layout/src/index.ts"],
       "@vendor-master/router": ["libs/app/router/src/index.ts"],
+      "@vendor-master/schema": ["libs/app/schema/src/index.ts"],
       "@vendor-master/store": ["libs/app/store/store/src/index.ts"],
       "@vendor-master/store-utils": ["libs/app/store/store-utils/src/index.ts"],
       "@vendor-master/ui": ["libs/app/ui/src/index.ts"],

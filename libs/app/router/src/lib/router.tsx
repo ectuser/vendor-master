@@ -6,7 +6,11 @@ import {
 } from 'react-router-dom';
 
 import { AuthLayout } from '@vendor-master/layout';
-import { CrateVendorPage, VendorsListPage } from '@vendor-master/vendor';
+import {
+  CrateVendorPage,
+  EditVendorPage,
+  VendorsListPage,
+} from '@vendor-master/vendor';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +35,7 @@ const router = createBrowserRouter([
         path: 'edit/:id',
         element: (
           <AuthLayout>
-            <div>Edit</div>
+            <EditVendorPage />
           </AuthLayout>
         ),
         handle: {
