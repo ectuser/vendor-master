@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { vendorApi } from '@vendor-master/api';
+import { authApi, vendorApi } from '@vendor-master/api';
+import { authSlice } from '@vendor-master/auth';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { FC, PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
@@ -7,9 +8,13 @@ import { Provider } from 'react-redux';
 export const store = configureStore({
   reducer: {
     [vendorApi.reducerPath]: vendorApi.reducer,
+    [authApi.reducerPath]: authApi.reducer,
+    [authSlice.reducerPath]: authSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(vendorApi.middleware),
+    getDefaultMiddleware()
+      .concat(vendorApi.middleware)
+      .concat(authApi.middleware),
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors
@@ -24,3 +29,11 @@ export type AppDispatch = typeof store.dispatch;
 export const StoreProvider: FC<PropsWithChildren> = ({ children }) => {
   return <Provider store={store}>{children}</Provider>;
 };
+
+store.subscribe(() => {
+  const state = store.getState();
+
+  const token = state[authSlice.reducerPath].token;
+
+  localStorage.setItem('vndr-token', token ?? '');
+});

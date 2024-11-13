@@ -1,10 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useLoginMutation } from '@vendor-master/api';
 import { useForm } from 'react-hook-form';
+import { Navigate } from 'react-router-dom';
 import { z } from 'zod';
 
 const LoginSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8).max(16),
+  password: z.string(),
 });
 
 type LoginFormData = z.infer<typeof LoginSchema>;
@@ -18,9 +20,15 @@ export const LoginPage = () => {
     resolver: zodResolver(LoginSchema),
   });
 
+  const [login, loginResult] = useLoginMutation();
+
   const onSubmit = (data: LoginFormData) => {
-    console.log(data);
+    login(data);
   };
+
+  if (loginResult.isSuccess) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="flex items-center justify-center content-container prose min-h-screen">
@@ -59,7 +67,11 @@ export const LoginPage = () => {
             )}
           </div>
 
-          <button type="submit" className="btn btn-primary w-full mt-4">
+          <button
+            type="submit"
+            className="btn btn-primary w-full mt-4"
+            disabled={loginResult.isLoading}
+          >
             Login
           </button>
         </form>
