@@ -5,7 +5,7 @@ import {
   useUpdateVendorMutation,
 } from '@vendor-master/api';
 import { NotFoundError, UnexpectedError } from '@vendor-master/ui';
-import { CreateVendorFormData, VendorEditForm } from './vendor-edit.form';
+import { EditVendorFormData, EditVendorForm } from './edit-vendor.form';
 
 export const EditVendorPage = () => {
   const params = useParams();
@@ -30,7 +30,7 @@ export const EditVendorPage = () => {
 
   console.log({ data });
 
-  const handleSubmit = (data: CreateVendorFormData) => {
+  const handleSubmit = (data: EditVendorFormData) => {
     updateVendor({ id: numbId, ...data });
   };
 
@@ -89,7 +89,7 @@ export const EditVendorPage = () => {
         </div>
       ) : null}
 
-      <VendorEditForm
+      <EditVendorForm
         values={data}
         submit={handleSubmit}
         disableEditing={updateResult.isLoading || deleteResult.isLoading}

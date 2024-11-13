@@ -1,6 +1,6 @@
 import { useAddVendorMutation } from '@vendor-master/api';
-import { CreateVendorFormData } from '../edit-vendor/vendor-edit.form';
-import { VendorCreateForm } from './vendor-create.form';
+import { EditVendorFormData } from '../edit-vendor/edit-vendor.form';
+import { VendorCreateForm } from './create-vendor.form';
 import { Navigate } from 'react-router-dom';
 
 export const CrateVendorPage = () => {
@@ -10,7 +10,7 @@ export const CrateVendorPage = () => {
     return <Navigate to="/vendors" />;
   }
 
-  const handleSubmit = (data: CreateVendorFormData) => {
+  const handleSubmit = (data: EditVendorFormData) => {
     addVendor(data);
   };
 

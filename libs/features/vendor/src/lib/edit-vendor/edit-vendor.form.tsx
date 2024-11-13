@@ -22,9 +22,9 @@ const EditVendorSchema = z.object({
   notes: z.string().nullable(),
 });
 
-export type CreateVendorFormData = z.infer<typeof EditVendorSchema>;
+export type EditVendorFormData = z.infer<typeof EditVendorSchema>;
 
-const vendorFields: FieldDefinition<CreateVendorFormData>[] = [
+const vendorFields: FieldDefinition<EditVendorFormData>[] = [
   { name: 'name', label: 'Name', type: 'text' },
   { name: 'name2', label: 'Name 2 (Optional)', type: 'text' },
   { name: 'address', label: 'Address', type: 'text' },
@@ -37,10 +37,10 @@ const vendorFields: FieldDefinition<CreateVendorFormData>[] = [
   { name: 'notes', label: 'Notes', type: 'textarea' },
 ];
 
-export const VendorEditForm: FC<{
-  values?: CreateVendorFormData;
+export const EditVendorForm: FC<{
+  values?: EditVendorFormData;
   disableEditing?: boolean;
-  submit: (data: CreateVendorFormData) => unknown;
+  submit: (data: EditVendorFormData) => unknown;
 }> = ({ values, submit, disableEditing }) => {
   const form = useForm({
     resolver: zodResolver(EditVendorSchema),
