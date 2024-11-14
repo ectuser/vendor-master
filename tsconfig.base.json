@@ -29,6 +29,7 @@
       "@vendor-master/schema": ["libs/app/schema/src/index.ts"],
       "@vendor-master/store": ["libs/app/store/store/src/index.ts"],
       "@vendor-master/store-utils": ["libs/app/store/store-utils/src/index.ts"],
+      "@vendor-master/toast": ["libs/app/toast/src/index.ts"],
       "@vendor-master/ui": ["libs/app/ui/src/index.ts"],
       "@vendor-master/vendor": ["libs/features/vendor/src/index.ts"]
     }

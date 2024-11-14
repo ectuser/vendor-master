@@ -6,6 +6,7 @@ import {
 } from '@vendor-master/api';
 import { NotFoundError, UnexpectedError } from '@vendor-master/ui';
 import { EditVendorFormData, EditVendorForm } from './edit-vendor.form';
+import { useToast } from '@vendor-master/toast';
 
 export const EditVendorPage = () => {
   const params = useParams();
@@ -18,6 +19,8 @@ export const EditVendorPage = () => {
   const [deleteVendor, deleteResult] = useDeleteVendorMutation();
   const [updateVendor, updateResult] = useUpdateVendorMutation();
 
+  const { showToast } = useToast();
+
   if (deleteResult.isSuccess) {
     return <Navigate to="/vendors" />;
   }
@@ -28,14 +31,20 @@ export const EditVendorPage = () => {
     return <EditUnexpectedError />;
   }
 
-  console.log({ data });
-
   const handleSubmit = (data: EditVendorFormData) => {
-    updateVendor({ id: numbId, ...data });
+    updateVendor({ id: numbId, ...data }).then((res) => {
+      if (!res.error) {
+        showToast('Vendor successfully updated', 'success');
+      }
+    });
   };
 
   const handleDelete = () => {
-    deleteVendor(numbId);
+    deleteVendor(numbId).then((res) => {
+      if (!res.error) {
+        showToast('Vendor successfully deleted', 'success');
+      }
+    });
   };
 
   if (isLoading || updateResult.isLoading || deleteResult.isLoading) {
