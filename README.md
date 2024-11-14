@@ -4,6 +4,8 @@ This application is designed to manage vendor data, enabling users to create, up
 
 ## Demo
 
+[https://capture.dropbox.com/VtXxEYTQkG3C4uqd](https://capture.dropbox.com/VtXxEYTQkG3C4uqd)
+
 ## Links
 
 - [Repository](https://github.com/ectuser/vendor-master)
