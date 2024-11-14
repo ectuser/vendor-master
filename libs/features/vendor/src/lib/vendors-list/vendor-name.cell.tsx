@@ -4,6 +4,7 @@ import { useDeleteVendorMutation } from '@vendor-master/api';
 import { selectIsAdmin } from '@vendor-master/auth';
 import { Vendor } from '@vendor-master/schema';
 import { useAppSelector } from '@vendor-master/store-utils';
+import { useToast } from '@vendor-master/toast';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,8 +14,14 @@ export const VendorNameCell: FC<{ info: CellContext<Vendor, string> }> = ({
   const [deleteVendor, deleteVendorResult] = useDeleteVendorMutation();
   const isAdmin = useAppSelector(selectIsAdmin);
 
+  const { showToast } = useToast();
+
   const handleDeleteVendor = () => {
-    deleteVendor(info.row.original.id);
+    deleteVendor(info.row.original.id).then((res) => {
+      if (!res.error) {
+        showToast('Vendor successfully removed', 'success');
+      }
+    });
   };
 
   return (

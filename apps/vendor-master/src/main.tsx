@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom/client';
 
 import { AppRouter } from '@vendor-master/router';
 import { StoreProvider } from '@vendor-master/store';
+import { ToastProvider } from '@vendor-master/toast';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <StoreProvider>
-      <AppRouter />
+      <ToastProvider>
+        <AppRouter />
+      </ToastProvider>
     </StoreProvider>
   </StrictMode>
 );
