@@ -1,4 +1,3 @@
-import { FC, PropsWithChildren } from 'react';
 import { Header } from './header';
 import { Breadcrumbs } from './breadcrumb';
 import { Outlet } from 'react-router-dom';
