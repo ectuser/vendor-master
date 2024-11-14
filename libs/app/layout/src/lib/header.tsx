@@ -56,11 +56,13 @@ export const Header = () => {
               <li>
                 <Link to="/contact-people">Contact People</Link>
               </li>
-              <li>
-                <div tabIndex={0} role="button">
-                  Log out
-                </div>
-              </li>
+              {isLoggedIn ? (
+                <li className="sm:hidden block">
+                  <div tabIndex={0} role="button" onClick={handleLogOut}>
+                    Log out ({role})
+                  </div>
+                </li>
+              ) : null}
             </ul>
           </div>
           <Link className="btn btn-ghost text-xl" to="/">
@@ -69,7 +71,7 @@ export const Header = () => {
         </div>
 
         {isLoggedIn ? (
-          <button className="btn" onClick={handleLogOut}>
+          <button className="btn hidden sm:block" onClick={handleLogOut}>
             Log Out ({role})
           </button>
         ) : null}

@@ -83,11 +83,35 @@ const router = createBrowserRouter([
   },
   {
     path: 'bank-accounts',
-    element: <div>Hello world! 123</div>,
+    element: <PrivateOutlet />,
+    children: [
+      {
+        path: '',
+        element: <AuthLayout />,
+        children: [
+          {
+            path: '',
+            element: <div>Under development...</div>,
+          },
+        ],
+      },
+    ],
   },
   {
     path: 'contact-people',
-    element: <div>Hello world! 123</div>,
+    element: <PrivateOutlet />,
+    children: [
+      {
+        path: '',
+        element: <AuthLayout />,
+        children: [
+          {
+            path: '',
+            element: <div>Under development...</div>,
+          },
+        ],
+      },
+    ],
   },
   {
     path: '*',
