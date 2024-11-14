@@ -88,6 +88,10 @@ Develop a frontend application for managing vendor master data.
 - **Guest Users** can only view entities. [DONE]
 - Users should be able to log out using a button in the header. [DONE]
 
+<details>
+
+<summary>Domains that were skipped</summary>
+
 #### Bank Account Management
 
 1. **Bank Accounts List Table**
@@ -129,6 +133,9 @@ Develop a frontend application for managing vendor master data.
 4. **Delete Contact Person**
    - Allow deletion of contact persons from the list table.
    - Allow deletion of contact persons from the view/update form.
+
+
+</details>
 
 ---
 
